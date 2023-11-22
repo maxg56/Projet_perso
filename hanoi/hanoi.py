@@ -1,77 +1,54 @@
 import pyxel
-from random import random
-class Element:
-    """_summary_"""
-
-    def __init__(self, valeur):
-        self.valeur = valeur
-        self.successeur = None
-
-    def renvoie_valeur(self):
-        return self.valeur
-
-    def renvoie_successeur(self):
-        return self.successeur
-
-    def modifie_valeur(self, valeur):
-        self.valeur = valeur
-
-    def modifie_successeur(self, successeur):
-        self.successeur = successeur
-
-    def __str__(self):
-        return f" {self.valeur} -> {self.successeur } "
-class Piles:
-    def __init__(self):
-        self.tette = None
-
-    def est_vide(self):
-        return self.tette is None
-
-    def empiler(self, x):
-        nouvel_element = Element(x)
-        if not self.est_vide():
-            nouvel_element.successeur = self.tette
-
-        self.tette = nouvel_element
-
-    def depiler(self):
-        if self.est_vide():
-            raise ValueError("LA pile set vide")
-
-        v = self.tette.valeur
-        self.tette = self.tette.successeur
-
-        return v
-    
-    def __str__(self) -> str:
-        if self.est_vide():
-            return "la pile est vide"
-        else :
-            return f"Hout || {self.tette} || Bas".format()
-
+from random import randint
+from Piles import Piles
 
 LARGEUR ,HAUTEUR = 160 ,120
 LARGEUR_BASE ,HAUTEUR_BASE = LARGEUR//6,5
 X_BASE_1 , Y_BASE = 20,HAUTEUR-10
 X_BASE_2 = X_BASE_1 + LARGEUR_BASE*2
 X_BASE_3 = X_BASE_2 + LARGEUR_BASE*2
-LST_COULER =[1,2,3,4,5,6,8,9,10,11,12,14,15]
+LST_COULEURS =[1,2,3,4,5,6,8,9,10,11,12,14,15]
+ETAGE  = 4
+
+class Bloc:
+    def __init__(self,vale,longueur, hauteur,x,y) -> None:
+        self.vale =vale
+        self.longuer = longueur
+        self.hauteur = hauteur
+        self.x,self.affiche_yy =x,y
+    
+    def affiche_vale(self):
+        return self.vale
+    
+    def affiche_longuer(self):
+        return self.longuer
+    
+    def affiche_hauteuer(self):
+        return self.hauteur
+    
+    def affiche_x(self):
+        return self.x
+    
+    def affiche_y(self):
+        return self.y 
+    
+    def dessine_Bloc(self,coleur):
+        
+        pyxel.rect(self.x, self.y, self.largeu, self.hauteur, coleur)
+        
+
 def generateur(etage : int ) :
     """Sert à générer les piles de la bonne taille pour les Tour de ahanoi"""
     tours = Piles()
     for i in range(etage,0,-1):
-        tours.empiler(i)
+        print(i)
+        tours.empiler(Bloc(i,20*i,HAUTEUR_BASE,10,10))
     return tours
-def dessine_tore(pimes : Piles,x_base ,y_base ):
-    """Sert à dessiner les piles"""
-    if not pimes.empiler():
-        v = pimes.depiler()
-        y_base += HAUTEUR_BASE
-        largeu -= 4
-        pyxel.rect(x_base, y_base, largeu, HAUTEUR_BASE, LST_COULER[random(len(LST_COULER))])
-        pyxel.text(x_base, y_base,str(v),7)
-        
+
+def dessine_tore(pile:Piles):
+    if not pile.est_vide():
+        v : Bloc = pile.depiler
+        v.dessine_Bloc(6)
         
 def hanoi(taille, debut, tenporaire, fin):
     if taille == 1:
@@ -86,21 +63,23 @@ def hanoi(taille, debut, tenporaire, fin):
 
 
 class App:
-    def __init__(self):
+    def __init__(self,etage):
         pyxel.init(LARGEUR, HAUTEUR)
+        self.tour = generateur(etage)
         self.x = 0
         pyxel.run(self.update, self.draw)
         
         
 
     def update(self):
-        pyxel.image(0).set(10, 10, ["0123", "4567", "89ab", "cdef"])
-        self.x = (self.x + 1) % pyxel.width
+        pass
 
     def draw(self):
+        couleur = LST_COULEURS[randint(0, len(LST_COULEURS) - 1)]
         pyxel.cls(7)
+        dessine_tore(self.tour)
         for x_base in [X_BASE_1, X_BASE_2, X_BASE_3]:
             pyxel.rect(x_base, Y_BASE, LARGEUR_BASE, HAUTEUR_BASE, 13)
         
-        
-App()
+       
+a=App(ETAGE)
