@@ -70,7 +70,7 @@ def dessine_tore(pimes : Piles,x_base ,y_base ):
         y_base += HAUTEUR_BASE
         largeu -= 4
         pyxel.rect(x_base, y_base, largeu, HAUTEUR_BASE, LST_COULER[random(len(LST_COULER))])
-        pyxel.text(x_base, y_base,str(v))
+        pyxel.text(x_base, y_base,str(v),7)
         
         
 def hanoi(taille, debut, tenporaire, fin):
