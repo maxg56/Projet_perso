@@ -20,6 +20,7 @@ class Bloc:
 
     def dessine_Bloc(self, couleur):
         pyxel.rect(self.x, self.y, self.longueur, self.hauteur, couleur)
+        pyxel.text(self.x,self.y,str(self.valeur),7)
 
 
 def generateur(etage: int):
