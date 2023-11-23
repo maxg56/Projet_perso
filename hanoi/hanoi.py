@@ -22,6 +22,8 @@ class Bloc:
         pyxel.rect(self.x, self.y, self.longueur, self.hauteur, couleur)
         pyxel.text(self.x,self.y,str(self.valeur),7)
 
+    def __str__(self) -> str:
+        return(f'v={self.valeur}l,h={self.longueur,self.hauteur} x= {self.x}y={self.y}')
 
 def generateur(etage: int):
     tours = Piles()
@@ -36,9 +38,12 @@ def dessine_tore(pile: Piles):
         v.dessine_Bloc(15)
 
 
-def hanoi(taille, debut, temporaire, fin):
+
+
+
+def hanoi(taille, debut : Piles, temporaire:Piles, fin : Piles):
     if taille == 1:
-        return debut + fin
+        return   fin.empiler(debut.depiler())
     else:
         return (
             hanoi(taille - 1, debut, fin, temporaire)
@@ -46,13 +51,21 @@ def hanoi(taille, debut, temporaire, fin):
             + fin
             + hanoi(taille - 1, temporaire, debut, fin)
         )
+debut = generateur(ETAGE)
+temporaire= Piles()
+fin = Piles()
 
-
+print(f"dedut = { debut} fin ={fin}")
+hanoi(ETAGE,debut,temporaire,fin)
+print(f"dedut = { debut} fin ={fin}")
 class App:
     def __init__(self, etage):
         pyxel.init(LARGEUR, HAUTEUR)
-        self.tour = generateur(etage)
+        self.tour_debut= generateur(etage)
+        self.tour_milue = Piles()
+        self.tour_fin = Piles()
         self.x = 0
+        
         pyxel.run(self.update, self.draw)
 
     def update(self):
@@ -60,9 +73,9 @@ class App:
 
     def draw(self):
         pyxel.cls(7)
-        dessine_tore(self.tour)
+        dessine_tore(self.tour_debut)
         for x_base in [X_BASE_1, X_BASE_2, X_BASE_3]:
             pyxel.rect(x_base, Y_BASE, LARGEUR_BASE, HAUTEUR_BASE, 13)
 
 
-a = App(ETAGE)
+#a = App(ETAGE)
