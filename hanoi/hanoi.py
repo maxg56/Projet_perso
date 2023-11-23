@@ -43,7 +43,7 @@ def dessine_tore(pile: Piles):
 
 def hanoi(taille, debut : Piles, temporaire:Piles, fin : Piles):
     if taille == 1:
-        return   fin.empiler(debut.depiler())
+        return   debut + fin
     else:
         return (
             hanoi(taille - 1, debut, fin, temporaire)
@@ -56,8 +56,25 @@ temporaire= Piles()
 fin = Piles()
 
 print(f"dedut = { debut} fin ={fin}")
-hanoi(ETAGE,debut,temporaire,fin)
+j =hanoi(ETAGE,"a","b","c")
+h = []
+
+for val in "av":
+    val2 = ""
+    
+    if len(val2) == 2:
+        h.append(val2)
+        val2 = []
+        print("1")
+    else :
+        val2.append(val)
+        print(f"{val2}")
+
+print(h)
+print(j)
+
 print(f"dedut = { debut} fin ={fin}")
+
 class App:
     def __init__(self, etage):
         pyxel.init(LARGEUR, HAUTEUR)
