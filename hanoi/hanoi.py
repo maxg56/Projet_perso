@@ -23,7 +23,7 @@ class Bloc:
         pyxel.text(self.x,self.y,str(self.valeur),7)
 
     def __str__(self) -> str:
-        return(f'v={self.valeur}l,h={self.longueur,self.hauteur} x= {self.x}y={self.y}')
+        return(f'v ={self.valeur} l,h ={self.longueur,self.hauteur} x = {self.x}y ={self.y}')
 
 def generateur(etage: int):
     tours = Piles()
@@ -51,29 +51,52 @@ def hanoi(taille, debut : Piles, temporaire:Piles, fin : Piles):
             + fin
             + hanoi(taille - 1, temporaire, debut, fin)
         )
+
+def séparation_en_2(lst):
+    h = []
+    val2 = []
+
+    for val in lst:
+        val2.append(val)
+
+        if len(val2) == 2:
+            h.append(tuple(val2))
+            val2 = []
+
+    if val2:
+        h.append(tuple(val2))
+
+    return h
+
+
+
+
+def sd(list :list, dedut : Piles , milue : Piles , fin : Piles ):
+    for asion in list :
+        if asion[0] == "a" :
+            if asion[1] == "b":
+                milue.empiler(dedut.depiler())
+            else:
+                fin.empiler(dedut.depiler())
+        elif asion[0] == "b" :
+            if asion[1] == "a":
+                debut.empiler(milue.depiler())
+            else:
+                fin.empiler(milue.depiler())
+        else:
+            if asion[1] == "a":
+                debut.empiler(fin.depiler())
+            else:
+                milue.empiler(fin.depiler())
+
 debut = generateur(ETAGE)
 temporaire= Piles()
 fin = Piles()
 
-print(f"dedut = { debut} fin ={fin}")
 j =hanoi(ETAGE,"a","b","c")
-h = []
+lis=séparation_en_2(j)
+sd(lis,debut,temporaire,fin)
 
-for val in "av":
-    val2 = ""
-    
-    if len(val2) == 2:
-        h.append(val2)
-        val2 = []
-        print("1")
-    else :
-        val2.append(val)
-        print(f"{val2}")
-
-print(h)
-print(j)
-
-print(f"dedut = { debut} fin ={fin}")
 
 class App:
     def __init__(self, etage):
@@ -95,4 +118,4 @@ class App:
             pyxel.rect(x_base, Y_BASE, LARGEUR_BASE, HAUTEUR_BASE, 13)
 
 
-#a = App(ETAGE)
+a = App(ETAGE)
