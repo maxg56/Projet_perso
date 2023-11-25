@@ -44,6 +44,17 @@ class Piles:
 
         return v
     
+    
+    # ... (autres méthodes)
+
+    def sommet(self):
+        if self.est_vide():
+            raise ValueError("La pile est vide")
+        return self.tette.valeur
+
+    # ... (autres méthodes)
+
+    
     def __str__(self) -> str:
         if self.est_vide():
             return "la pile est vide"

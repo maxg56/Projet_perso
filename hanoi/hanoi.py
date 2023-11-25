@@ -34,8 +34,13 @@ def generateur(etage: int):
 
 def dessine_tore(pile: Piles):
     if not pile.est_vide():
-        v: Bloc = pile.depiler()
-        v.dessine_Bloc(15)
+        valeur_sommet : Bloc = pile.sommet()
+        valeur_sommet.dessine_Bloc
+        print(f"La valeur du sommet est : {valeur_sommet}")
+        # Autres opérations avec la valeur du sommet sans dépiler l'élément
+
+
+
 
 
 
@@ -89,13 +94,13 @@ def sd(list :list, dedut : Piles , milue : Piles , fin : Piles ):
             else:
                 milue.empiler(fin.depiler())
 
-debut = generateur(ETAGE)
+"""debut = generateur(ETAGE)
 temporaire= Piles()
 fin = Piles()
 
 j =hanoi(ETAGE,"a","b","c")
 lis=séparation_en_2(j)
-sd(lis,debut,temporaire,fin)
+sd(lis,debut,temporaire,fin)"""
 
 
 class App:
