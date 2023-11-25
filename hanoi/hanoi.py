@@ -76,13 +76,13 @@ def séparation_en_2(lst):
 
 
 
-def sd(list :list, dedut : Piles , milue : Piles , fin : Piles ):
+def sd(list :list, debut : Piles , milue : Piles , fin : Piles ):
     for asion in list :
         if asion[0] == "a" :
             if asion[1] == "b":
-                milue.empiler(dedut.depiler())
+                milue.empiler(debut.depiler())
             else:
-                fin.empiler(dedut.depiler())
+                fin.empiler(debut.depiler())
         elif asion[0] == "b" :
             if asion[1] == "a":
                 debut.empiler(milue.depiler())
