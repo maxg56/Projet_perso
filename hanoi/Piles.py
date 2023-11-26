@@ -21,6 +21,7 @@ class Element:
         return f" {self.valeur} -> {self.successeur } "
 
 
+
 class Piles:
     def __init__(self):
         self.tette = None
@@ -37,29 +38,30 @@ class Piles:
 
     def depiler(self):
         if self.est_vide():
-            raise ValueError("LA pile set vide")
+            raise ValueError("La pile est vide")
 
         v = self.tette.valeur
         self.tette = self.tette.successeur
 
         return v
-    
-    
-    # ... (autres méthodes)
+
+    def __iter__(self):
+        current = self.tette
+        while current:
+            yield current
+            current = current.successeur
 
     def sommet(self):
         if self.est_vide():
             raise ValueError("La pile est vide")
         return self.tette.valeur
 
-    # ... (autres méthodes)
-
-    
-    def __str__(self) -> str:
+    def __str__(self):
         if self.est_vide():
-            return "la pile est vide"
-        else :
-            return f"Hout || {self.tette} || Bas".format()
+            return "La pile est vide"
+        else:
+            elements = [str(element) for element in self]
+            return f"Haut || {', '.join(elements)} || Bas"
 
 
 if __name__ == "__main__":

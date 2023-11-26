@@ -31,16 +31,21 @@ class Bloc:
 
 def generateur(etage: int):
     tours = Piles()
+    y = Y_BASE
     for i in range(etage, 0, -1):
-        tours.empiler(Bloc(i, 20 * i, HAUTEUR_BASE, 10, 10))
+        x = X_BASE_1 +2
+        y -= HAUTEUR_BASE
+        tours.empiler(Bloc(i, 20 * i, HAUTEUR_BASE, x, y))
     return tours
 
 
 def dessine_tore(pile: Piles):
     
-    if not pile.est_vide():
-        valeur_sommet : Bloc = pile.sommet()
-        valeur_sommet.dessine_Bloc(7)
+    for i in range(5):
+       if not pile.est_vide() :
+            valeur_sommet : Bloc = pile.depiler()
+            valeur_sommet.dessine_Bloc(7)
+        
         # Autres opérations avec la valeur du sommet sans dépiler l'élément
 
 
@@ -106,27 +111,47 @@ j =hanoi(ETAGE,"a","b","c")
 lis=séparation_en_2(j)
 sd(lis,debut,temporaire,fin)"""
 
+import pyxel
 
-class App:
-    def __init__(self, etage):
-        pyxel.init(LARGEUR, HAUTEUR)
-        self.tour_debut= generateur(etage)
+
+class TourDeHanoi:
+    def __init__(self,  etage):
+        # Initialisation de Pyxel avec une résolution de 160x120 pixels et une fréquence d'images de 30 par seconde
+        pyxel.init(160, 120, fps= 1)
+        # Initialisation des attributs pour la deuxième partie du code
+        self.etage = etage
+        self.tour_debut = generateur(etage)
         self.tour_milue = Piles()
         self.tour_fin = Piles()
         self.x = 0
-        dessine_tore(self.tour_debut)
+        self.frame_count = 0
+        print(self.tour_debut)
+        # Exécution de la boucle principale du jeu avec les fonctions update et draw
         pyxel.run(self.update, self.draw)
 
     def update(self):
+        # Incrémentation du compteur de frames
+        #self.frame_count = (self.frame_count + 1) % 60
         pass
+        # Ajoutez ici toute logique de mise à jour supplémentaire pour le jeu
 
     def draw(self):
-        pyxel.cls(7)
+        # Effacement de l'écran
+        pyxel.cls(0)
         
-        dessine_tore(self.tour_debut)
+        # Appel de la fonction pour dessiner la tour de Hanoï
+        
+
+        # Dessin des éléments de la deuxième partie du code
+        n =dessine_tore(self.tour_debut)
 
         for x_base in [X_BASE_1, X_BASE_2, X_BASE_3]:
             pyxel.rect(x_base, Y_BASE, LARGEUR_BASE, HAUTEUR_BASE, 13)
 
+    def drawHanoi(self):
+        pass 
 
-a = App(ETAGE)
+# Assurez-vous d'importer correctement les autres fonctions et classes utilisées dans votre code initial.
+
+
+a = TourDeHanoi(ETAGE)
