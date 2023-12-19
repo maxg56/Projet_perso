@@ -1,5 +1,5 @@
 import graphviz
-from arbe.pilesFiles import Pile, File
+from pilesFiles import Pile, File
 
 
 class Arbre:

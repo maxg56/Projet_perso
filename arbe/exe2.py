@@ -1,4 +1,4 @@
-from pilesFiles import Pile, File
+
 from Arbres import Arbre
 
 arbre =("*",[
@@ -7,8 +7,7 @@ arbre =("*",[
     ])
 '("",[])'
 ["x",[]]
-def convrticere(forme,ardre)  : 
-    Valeur ,enfant = arbre
+def convrticere(ardre) -> Arbre  : 
 
     if len(arbre) == 0:
         return Arbre()
@@ -19,13 +18,6 @@ def convrticere(forme,ardre)  :
         voai.append( convrticere(enfant))
     arbre = Arbre(arbre[0],voai)
     return arbre
+a = convrticere(arbre)
 
-def parcourir_arbre(arbre):
-   Valeur ,enfant = arbre
-
-    print(symbole)  # Fais quelque chose avec le symbole, par exemple l'afficher
-
-    for sous_arbre in sous_arbres:
-        parcourir_arbre(sous_arbre)
-
-parcourir_arbre(arbre)
+a.dessiner()
