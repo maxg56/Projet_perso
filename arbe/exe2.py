@@ -6,18 +6,24 @@ arbre =("*",[
     ("-",[(5,[]),(6,[])])
     ])
 '("",[])'
+arbre3 = ["x",[["x",[["x",[]]]],["x",[]]]]
 ["x",[]]
-def convrticere(ardre) -> Arbre  : 
-
-    if len(ardre) == 0:
+def convertisseur(arbre1) -> Arbre  : 
+    """ il convertit un arbre sous la forme ("",[]) en un ogest de la classe Arbre """
+    if len(arbre1) == 0:
         return Arbre()
-    if ardre[1] == []:
-        return Arbre(ardre[0])
+    if arbre1[1] == []:
+        return Arbre(arbre1[0])
     voai = []
-    for enfant in ardre[1]:
-        voai.append( convrticere(enfant))
-    arbre = Arbre(ardre[0],voai)
+    for enfant in arbre1[1]:
+        voai.append( convertisseur(enfant))
+    arbre = Arbre(arbre1[0],voai)
     return arbre
-a = convrticere(arbre)
 
+a = convertisseur(arbre)
+d = convertisseur(arbre3)
+
+
+
+print(d)
 print(a)
