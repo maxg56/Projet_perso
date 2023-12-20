@@ -9,15 +9,15 @@ arbre =("*",[
 ["x",[]]
 def convrticere(ardre) -> Arbre  : 
 
-    if len(arbre) == 0:
+    if len(ardre) == 0:
         return Arbre()
-    if arbre[1] == []:
-        return Arbre(arbre[0])
+    if ardre[1] == []:
+        return Arbre(ardre[0])
     voai = []
     for enfant in ardre[1]:
         voai.append( convrticere(enfant))
-    arbre = Arbre(arbre[0],voai)
+    arbre = Arbre(ardre[0],voai)
     return arbre
 a = convrticere(arbre)
 
-a.dessiner()
+print(a)

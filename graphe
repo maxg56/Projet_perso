@@ -1,17 +1,15 @@
 graph {
-	0 [label="Noeud 1"]
-	1 [label="Noeud 3"]
+	0 [label="*"]
+	1 [label="+"]
 	0 -- 1
-	2 [label="Noeud 2"]
+	2 [label="-"]
 	0 -- 2
-	3 [label="Noeud 8"]
-	0 -- 3
-	4 [label="Noeud 7"]
+	3 [label=5]
+	2 -- 3
+	4 [label=6]
 	2 -- 4
-	5 [label="Noeud 4"]
+	5 [label=3]
 	1 -- 5
-	6 [label="Noeud 5"]
-	5 -- 6
-	7 [label="Noeud 6"]
-	5 -- 7
+	6 [label=8]
+	1 -- 6
 }
