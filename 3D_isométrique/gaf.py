@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from random import randrange
+from typing import Union,List
 
 
 
 
-
-def dessine(batiments, fichier=None):
+def dessine(batiments:List[int], fichier:Union[str,None]=None) -> None:
     """Dessine les batiments en perspective isométrique.
     Si on fournit un nom de fichier, la figure est sauvegardée
     à cet emplacement, sinon elle est simplement affichée.
@@ -35,10 +35,7 @@ def dessine(batiments, fichier=None):
     else:
         plt.show()
 
-
-from random import randrange
-
-def chevauchement(batiments, x_d, x_f, y_d, y_f, z_d, z_f):
+def chevauchement(batiments:List[int], x_d:int, x_f:int , y_d:int, y_f:int, z_d:int, z_f:int)->bool:
     """Vérifie s'il y a chevauchement avec les bâtiments existants."""
     for b in batiments:
         if (x_d < b[1] and x_f > b[0] and
@@ -47,7 +44,7 @@ def chevauchement(batiments, x_d, x_f, y_d, y_f, z_d, z_f):
             return True
     return False
 
-def batiments_aleatoires(n, x_maxi=10, y_maxi=10, z_maxi=5, largeur_max=5)-> list:
+def batiments_aleatoires(n :int, x_maxi:int=10, y_maxi:int =10, z_maxi:int=5, largeur_max:int=5)-> List[int]:
     """
     Renvoie n triplets (gauche, droite, haut, bas, devant, derrière)
     avec 0 <= gauche < x_maxi
@@ -72,5 +69,5 @@ def batiments_aleatoires(n, x_maxi=10, y_maxi=10, z_maxi=5, largeur_max=5)-> lis
 
 
 
-dessine(batiments_aleatoires(20,20,20,20,5) )
+dessine(batiments_aleatoires(20,20,20,20,10) )
 
