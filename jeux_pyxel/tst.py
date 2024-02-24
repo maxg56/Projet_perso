@@ -14,7 +14,18 @@ class Entrepose(Bateau):
     def __init__(self, largeur: int = 2, hauteur: int = 2) -> None:
         super().__init__(largeur, hauteur)
         self.stock = {}
-        self.color = (0, 0, 255)  # Couleur bleue pour les cases remplies
+        self.color = (0, 0, 255)  
+    
+
+    def est_de_dans(self,obejai) -> bool :
+        return obejai in self.stock
+    
+    def entré(self , obejai ,n) ->  None :
+        if self.est_de_dans(obejai):
+            self.stock[obejai] += n
+        else :
+            self.stock[obejai] = n
+
 
 class App(arcade.Window):
     def __init__(self):
