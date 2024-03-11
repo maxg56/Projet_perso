@@ -69,5 +69,6 @@ def batiments_aleatoires(n :int, x_maxi:int=10, y_maxi:int =10, z_maxi:int=5, la
 
 
 
+
 dessine(batiments_aleatoires(20,20,20,20,10) )
 
