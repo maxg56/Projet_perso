@@ -9,6 +9,7 @@ class Display_hanoi:
     color_green = (0, 255, 0)
     color_black = (0, 0, 0)
     color_white = (255, 255, 255)
+    
 
     def __init__(self, title, width, height, pause_t):
         pygame.init()
