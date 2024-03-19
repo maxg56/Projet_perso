@@ -1,0 +1,4 @@
+{
+    "pyxel" : "pip install -U pyxel",
+    "graphviz": "pip install graphviz"
+}
