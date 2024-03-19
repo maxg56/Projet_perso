@@ -9,5 +9,5 @@ while len(pile ) >= 0 :
     filepath = os.path.join(repertoire_source, pile.pop())
     if os.path.isfile(filepath): 
         pass
-    else:
-        pile.append(os.listdir(repertoire_source+filepath))
+    elif os.path.isdir(filepath):
+        pile +=os.listdir(repertoire_source+filepath)
