@@ -4,10 +4,15 @@ import shutil
 
 repertoire_source = "\.."
 pile = os.listdir(repertoire_source)
-
-while len(pile ) >= 0 :
+b  = 0
+while len(pile ) != 0 :
     filepath = os.path.join(repertoire_source, pile.pop())
-    if os.path.isfile(filepath): 
+
+    if os.path.isfile(filepath):
+        print(len(pile)) 
         pass
     elif os.path.isdir(filepath):
-        pile +=os.listdir(repertoire_source+filepath)
+        repertoire_source = str(filepath)
+        pile +=os.listdir(repertoire_source)
+        print(len(pile))
+        
