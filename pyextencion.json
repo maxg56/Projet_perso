@@ -1,5 +1,6 @@
 {
     "pyxel" : "pip install -U pyxel",
     "graphviz": "pip install graphviz",
-    "kivy" : "pip install Kivy "
+    "kivy" : "pip install Kivy ",
+    "arcade" : "pip install arcade"
 }
