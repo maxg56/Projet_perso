@@ -6,7 +6,7 @@ def valeur_et_indice_du_max(valeurs:List[Union[int,float]])-> Union[None,Tuple[U
     
     max_i = 0
     maxi = valeurs[0]
-    for  val , i in enumerate(valeurs):
+    for i, val  in enumerate(valeurs):
         if maxi < val:
             maxi = val 
             max_i = i
@@ -34,3 +34,14 @@ assert maxi([1, 5, 6, 9, 1, 2, 3, 7, 9, 8]) == 9
 assert maxi([1, 1, 1, 99, 99]) == 99
 assert maxi([10]) == 10
 assert maxi([]) == None
+
+
+def max_i(valeurs : List[Union[int,float]])->  Union[int,float, None]:
+    if valeurs == [] :
+        return None
+    
+    max_i = 0
+    for i, val  in range(len(valeurs)):
+        if valeurs[max_i] < valeurs[i] :
+            max_i = i
+    return  max_i
