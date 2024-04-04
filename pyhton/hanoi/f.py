@@ -129,4 +129,4 @@ class DisplayHanoi:
             indx += max_rec_width
 
 # Création de l'instance de la classe DisplayHanoi avec 3 disques
-hanoi_display = DisplayHanoi(3)
+hanoi_display = DisplayHanoi(5)
