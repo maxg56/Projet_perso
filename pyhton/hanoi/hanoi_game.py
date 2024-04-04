@@ -12,7 +12,7 @@ ETAGE = 4
 
 
 class Bloc:
-    def __init__(self, valeur, longueur, hauteur, x, y) -> None:
+    def __init__(self, valeur , longueur, hauteur, x, y) -> None:
         self.valeur = valeur
         self.longueur = longueur
         self.hauteur = hauteur
@@ -40,18 +40,10 @@ def generateur(etage: int):
 
 
 def dessine_tore(pile: Piles):
-    
-    for i in range(5):
-       if not pile.est_vide() :
-            valeur_sommet : Bloc = pile.depiler()
-            valeur_sommet.dessine_Bloc(7)
-        
-        # Autres opérations avec la valeur du sommet sans dépiler l'élément
-
-
-
-
-
+    """dessine les toure"""
+    while not pile.est_vide() :
+        valeur_sommet : Bloc = pile.depiler()
+        valeur_sommet.dessine_Bloc(7)
 
 
 
@@ -110,14 +102,10 @@ fin = Piles()
 j =hanoi(ETAGE,"a","b","c")
 lis=séparation_en_2(j)
 sd(lis,debut,temporaire,fin)"""
-
-import pyxel
-
-
 class TourDeHanoi:
     def __init__(self,  etage):
         # Initialisation de Pyxel avec une résolution de 160x120 pixels et une fréquence d'images de 30 par seconde
-        pyxel.init(160, 120, fps= 1)
+        pyxel.init(160, 120, fps= 12)
         # Initialisation des attributs pour la deuxième partie du code
         self.etage = etage
         self.tour_debut = generateur(etage)
@@ -134,7 +122,21 @@ class TourDeHanoi:
         #self.frame_count = (self.frame_count + 1) % 60
         pass
         # Ajoutez ici toute logique de mise à jour supplémentaire pour le jeu
+    def drawHanoi(self):
+        n = self.nb_disques
+        rec_height = 8
+        max_rec_width = 20
+        indx = 0
 
+        # Dessin des piliers et des disques
+        for i in [self.depart, self.intermediaire, self.arrivee]:
+            ref_y = 120 - rec_height
+            for j in i:
+                rec_width = int(max_rec_width * j / n)
+                ref_x = int(indx + (max_rec_width - rec_width) / 2)
+                pyxel.rect(ref_x, ref_y, rec_width, rec_height, 12)
+                ref_y -= rec_height
+            indx += max_rec_width
     def draw(self):
         # Effacement de l'écran
         pyxel.cls(0)
@@ -143,7 +145,7 @@ class TourDeHanoi:
         
 
         # Dessin des éléments de la deuxième partie du code
-        n =dessine_tore(self.tour_debut)
+        n =self.drawHanoi()
 
         for x_base in [X_BASE_1, X_BASE_2, X_BASE_3]:
             pyxel.rect(x_base, Y_BASE, LARGEUR_BASE, HAUTEUR_BASE, 13)

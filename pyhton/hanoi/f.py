@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import time
-
+import pyxel
 class Display_hanoi:
 
     color_red = (255, 0, 0)
@@ -79,8 +79,6 @@ graphHanoi.drawHanoi(depart, arrivee, intermediaire)
 hanoi_display(nb_disques, depart, arrivee, intermediaire)
 graphHanoi.waitQuit()
 
-import pyxel
-import time
 
 class DisplayHanoi:
     def __init__(self, nb_disques):
