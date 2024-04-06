@@ -77,8 +77,8 @@ class DisplayHanoi:
         pyxel.init(LARGEUR, HAUTEUR, fps=30)
 
         self.num_blocks = num_blocks
-        self.tower_start = Tower(X_BASE_1, num_blocks)
-        self.tower_temp = Tower(X_BASE_2)
+        self.tower_start = Tower(X_BASE_1,Y_BASE, num_blocks)
+        self.tower_temp = Tower(X_BASE_2,)
         self.tower_end = Tower(X_BASE_1)
         self.frame_count = 0
         self.pause_time = pause_time
