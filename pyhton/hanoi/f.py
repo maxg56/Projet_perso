@@ -69,7 +69,7 @@ def hanoi_display(nb_disques, depart, arrivee, intermediaire):
         hanoi_display(nb_disques-1, intermediaire, arrivee, depart)
 
 #print('Nombre de deplacements', hanoi(20, 'gauche', 'droite', 'milieu'))
-"""
+
 graphHanoi = Display_hanoi('Les tours de Hanoï', 1500, 600,  2)
 nb_disques = 3
 depart = (1, list(range(nb_disques,0,-1)))
@@ -78,7 +78,6 @@ intermediaire = (2, [])
 graphHanoi.drawHanoi(depart, arrivee, intermediaire)
 hanoi_display(nb_disques, depart, arrivee, intermediaire)
 graphHanoi.waitQuit()
-"""
 
 class DisplayHanoi:
     def __init__(self, nb_disques):
@@ -114,9 +113,9 @@ class DisplayHanoi:
 
     def drawHanoi(self):
         n = self.nb_disques
-        rec_height = 8
-        max_rec_width = 20
-        indx = 10
+        rec_height = 5
+        max_rec_width = 33
+        indx = 15
 
         # Dessin des piliers et des disques
         for i in [self.depart, self.intermediaire, self.arrivee]:
@@ -124,9 +123,9 @@ class DisplayHanoi:
             for j in i:
                 rec_width = int(max_rec_width * j / n)
                 ref_x = int(indx + (max_rec_width - rec_width) / 2)
-                pyxel.rect(ref_x, ref_y, rec_width, rec_height, 12)
+                pyxel.rect(ref_x, ref_y, rec_width, rec_height, 10)
                 ref_y -= rec_height
             indx += max_rec_width
 
 # Création de l'instance de la classe DisplayHanoi avec 3 disques
-hanoi_display = DisplayHanoi(3)
+#hanoi_display = DisplayHanoi(3)
