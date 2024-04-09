@@ -45,3 +45,5 @@ def max_i(valeurs : List[Union[int,float]])->  Union[int,float, None]:
         if valeurs[max_i] < valeurs[i] :
             max_i = i
     return  max_i
+
+
