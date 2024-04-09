@@ -58,7 +58,6 @@ class Toure :
                     b2 :Bloc = self.tours.depiler()
                     b_ref_x = b2.x +b2.longueur//2 - largeur_etage//2
                     self.tours.empiler(b2)
-                x2 = b_ref_x 
                 self.tours.empiler(Bloc(n, largeur_etage, rec_height,b_ref_x, self.ref_y))
                 self.ref_y -= rec_height
                 
@@ -113,7 +112,7 @@ class DisplayHanoi:
     def update(self):
         self.frame_count += 1
         
-        if self.frame_count == 30:
+        if self.frame_count == 10:
 
             if self.i_orde < len(self.orde) and self.ot:
                 self.sd(self.orde[self.i_orde],self.tour_debut,self.tour_milue,self.tour_fin)
