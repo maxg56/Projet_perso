@@ -1,5 +1,5 @@
 import pyxel
-from typing import List,Tuple,Union,Deque
+from typing import List,Tuple,Union,Any
 from Piles import Piles 
 
 LARGEUR, HAUTEUR = 200, 120
@@ -11,16 +11,17 @@ X_BASE_3 = X_BASE_2 + LARGEUR_BASE * 2
 
 class Bloc:
     """Classe représentant un bloc dans la tour de Hanoi."""
-    def __init__(self, valeur :int , longueur:int, hauteur:int, x:int, y:int) -> None:
+    def __init__(self, valeur :int , longueur:int, hauteur:int, x:int, y:int,couleur :int =12) -> None:
         self.valeur = valeur
         self.longueur = int(longueur)
         self.hauteur = hauteur
         self.x, self.y = x, y
+        self.couleur = couleur
         
 
-    def dessine_Bloc(self, couleur:int)->None:
+    def dessine_Bloc(self)->None:
         """dessine les Bloce"""
-        pyxel.rect(self.x, self.y, self.longueur, self.hauteur, couleur)
+        pyxel.rect(self.x, self.y, self.longueur, self.hauteur, self.couleur)
         pyxel.text(self.x+(self.longueur//2),self.y,str(self.valeur),7)
         
 
@@ -34,14 +35,13 @@ class Bloc:
 
 class Toure :
     """Classe représentant une tour dans le jeu de Hanoi."""
-    def __init__(self, x_base :int ,y_base:int =Y_BASE ,etage :int = None ) -> None:
+    def __init__(self, x_base :int ,y_base:int =Y_BASE ,etage :Union[int,None] = None ) -> None:
         self.tours = Piles()
         self.ref_x = x_base 
         self.ref_y = y_base -8
         self.r =6
         if etage is not None:
             rec_height = 8
-            
             largeur_etage_min = 11
             largeur_etage = int(largeur_etage_min +6*etage)
             if largeur_etage > LARGEUR_BASE:
@@ -69,21 +69,23 @@ class Toure :
         tmp =Piles()
         while not self.tours.est_vide():
             bl:Bloc = self.tours.depiler()
-            bl.dessine_Bloc(12)
+            bl.dessine_Bloc()
             tmp.empiler(bl)
         while not tmp.est_vide():
             self.tours.empiler(tmp.depiler())
         return self.tours
     
-    def deplasé_vre(self,toure ) :
+    def deplasé_vre(self,toure) -> None:
         if type(toure) is Toure and not self.tours.est_vide():
             b :Bloc = self.tours.depiler()
             if not toure.tours.est_vide():
                 b2 :Bloc = toure.tours.depiler()
+                b2.couleur =12
                 ref_x = b2.x + b2.longueur//2 -b.longueur//2
                 toure.tours.empiler(b2)
             else:
-                 ref_x = toure.ref_x  +LARGEUR_BASE//2- b.longueur//2
+                ref_x = toure.ref_x  +(LARGEUR_BASE- b.longueur)//2
+            b.couleur =8
             b.Déplace(ref_x,toure.ref_y)
             toure.tours.empiler(b)
             self.ref_y += 8
@@ -112,7 +114,7 @@ class DisplayHanoi:
     def update(self):
         self.frame_count += 1
         
-        if self.frame_count == 10:
+        if self.frame_count == 30:
 
             if self.i_orde < len(self.orde) and self.ot:
                 self.sd(self.orde[self.i_orde],self.tour_debut,self.tour_milue,self.tour_fin)
