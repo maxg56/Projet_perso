@@ -55,6 +55,23 @@ class Piles:
         if self.est_vide():
             raise ValueError("La pile est vide")
         return self.tette.valeur
+    def torné(self,piles):
+        tpm =Piles()
+        while not piles.est_vide():
+            tpm.empiler(piles.depiler())
+        
+        return tpm
+    
+    def __len__(self):
+        if self.est_vide():
+            return 0
+        cotere  = 0
+        tmp =Piles()
+        while not self.est_vide():
+            tmp.empiler(self.depiler())
+            cotere +=1
+        self.torné(tmp)
+        return cotere
 
     def __str__(self):
         if self.est_vide():
