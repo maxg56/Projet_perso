@@ -1,4 +1,4 @@
-import whisper
+from  whisper import * 
 
 model = whisper.load_model("base")
 result = model.transcribe("audio.mp3")
