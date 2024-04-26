@@ -87,5 +87,5 @@ def tri_selection(val:List[Union[int,float]])-> List[Union[int,float]]:
 
                                                   # Example usage:
 values = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-sorted_values = tri_selection(values)
-print(sorted_values)                                           
+#sorted_values = tri_selection(values)
+#print(sorted_values)                                           
