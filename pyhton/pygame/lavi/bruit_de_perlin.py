@@ -55,7 +55,7 @@ if __name__ == "__main__":
     for i in range(10):
         image_Nom = f"noise{i}.png"
         matrice = bruit_de_perlin(taille[0],taille[1])
-
+        print(matrice)
         image = Image.new(mode="RGB", size=taille)
         for x in range(taille[0]):
             for y in range(taille[1]):

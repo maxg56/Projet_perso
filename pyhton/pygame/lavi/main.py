@@ -11,7 +11,7 @@ class Game:
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption("Mon jeu Pygame")
         self.image = pygame.image.load("/home/max_dev/Documents/git/Projet_perso/pyhton/pygame/lavi/ressources/tente.png")
-        self.image2 = pygame.image.load("/home/max_dev/Documents/git/Projet_perso/pyhton/pygame/lavi/ressources/peti.png")
+        self.image2 = pygame.image.load("/home/max_dev/Documents/git/Projet_perso/pyhton/pygame/lavi/ressources/arbre.png")
         self.camera_x = 0
         self.camera_y = 0
 
