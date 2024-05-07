@@ -1,1 +1,0 @@
-# Documentation du 3D isométique
