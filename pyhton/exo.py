@@ -84,3 +84,5 @@ print( decode(s, d) )
 
 d_1 = {v:k for k,v in d.items()}
 print(d_1)
+list = [3,2,7,8,1]
+[i for i in list if i ]

@@ -85,7 +85,6 @@ class Toure :
                 toure.tours.empiler(b2)
             else:
                 ref_x = toure.ref_x  +(LARGEUR_BASE- b.longueur)//2
-            b.couleur =8
             b.Déplace(ref_x,toure.ref_y)
             toure.tours.empiler(b)
             self.ref_y += 8
