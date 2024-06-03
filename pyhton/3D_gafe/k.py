@@ -115,9 +115,6 @@ class Jeu :
 
         self.pomme.dessine()
         self.serpent.dessine()
-
-import pyxel
-
 class Bouton:
     def __init__(self, x, y, largeur, hauteur, texte):
         self.x = x
@@ -148,9 +145,11 @@ class App:
 
     def mise_a_jour(self):
         
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+       
             if self.bouton.clic(pyxel.mouse_x, pyxel.mouse_y):
+                Jeu()
                 pyxel.quit()
+                
 
 
     def dessine(self):
@@ -161,5 +160,6 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+   
+    Jeu()
 

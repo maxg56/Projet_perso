@@ -1,8 +1,5 @@
 def decode(s, d):
     return ''.join(d[car] if car in d else car for car in s)
-     
-
-
 # Tests
 s = """Gur Mra bs Clguba, ol Gvz Crgref
 
@@ -84,5 +81,3 @@ print( decode(s, d) )
 
 d_1 = {v:k for k,v in d.items()}
 print(d_1)
-list = [3,2,7,8,1]
-[i for i in list if i ]
